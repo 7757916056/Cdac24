@@ -14,9 +14,24 @@ const Calculator = () => {
 
   const handleEvaluate = () => {
     try {
+      // Evaluate the expression
       setInput(eval(input).toString());
     } catch (error) {
       setInput("Error");
+    }
+  };
+
+  const handlePercent = () => {
+    // Calculate percentage (e.g., 50% will be 50 / 100)
+    if (input) {
+      setInput((parseFloat(input) / 100).toString());
+    }
+  };
+
+  const handleIncrementBy2 = () => {
+    // Increment the current number by 2
+    if (input) {
+      setInput((parseFloat(input) + 2).toString());
     }
   };
 
@@ -40,6 +55,10 @@ const Calculator = () => {
         <button onClick={() => handleClick("/")}>/</button>
         <button onClick={handleClear}>C</button>
         <button onClick={handleEvaluate}>=</button>
+        {/* Add new feature: Increment by 2 */}
+        <button onClick={handleIncrementBy2}>+2</button>
+        {/* Add percentage button */}
+        <button onClick={handlePercent}>%</button>
       </div>
     </div>
   );
